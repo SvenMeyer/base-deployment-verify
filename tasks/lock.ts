@@ -53,6 +53,7 @@ task("task:deployLock", "Deploys Lock Contract")
     const NOW_IN_SECONDS = Math.round(Date.now() / 1000);
 
     const signers = await ethers.getSigners();
+
     const lockedAmount = ethers.parseEther(taskArguments.value);
     const unlockTime = NOW_IN_SECONDS + parseInt(taskArguments.unlock);
     const lockFactory = await ethers.getContractFactory("Lock");

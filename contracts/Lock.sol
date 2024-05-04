@@ -13,10 +13,11 @@ contract Lock {
 
     constructor(uint256 _unlockTime) payable {
         if (block.timestamp >= _unlockTime) {
-            revert InvalidUnlockTime(_unlockTime);
+            // revert InvalidUnlockTime(_unlockTime);
+            _unlockTime += block.timestamp;
         }
 
-        unlockTime = _unlockTime;
+        unlockTime = _unlockTime + block.timestamp;
         owner = payable(msg.sender);
     }
 
